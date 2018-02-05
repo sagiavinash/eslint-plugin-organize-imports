@@ -1,0 +1,28 @@
+{
+  "name": "eslint-plugin-boilerplate",
+  "version": "0.0.0",
+  "description": "ESLint plugin boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "major-release": "npm version major && npm publish && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish && git push --follow-tags",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "test": "mocha tests/**/*.js"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "3.8.1",
+    "mocha": "3.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "^2.0.0 || ^3.0.0"
+  },
+  "engines": {
+    "node": ">=0.10"
+  }
+}
