@@ -1,6 +1,6 @@
 var path = require('path');
 var rule = require('../../../lib/rules/example');
-var test = require('/Users/avinashvarma/Downloads/Downloads/oss/eslint-plugin-import-comments/tests/lib/files/index.js');
+var test = require('../files/index.js');
 var RuleTester = require('eslint').RuleTester;
 RuleTester.setDefaultConfig({
   parserOptions: {
