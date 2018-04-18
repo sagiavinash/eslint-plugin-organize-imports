@@ -1,7 +1,5 @@
 module.exports = {
   rules: {
-    example: require('./lib/rules/example')
-
-    // add additional rules here
+    'import-comment': require('./lib/rules/import-comment')
   }
 };

@@ -1,52 +1,61 @@
+require('babel-register');
+
 var path = require('path');
-var rule = require('../../../lib/rules/example');
+var rule = require('../../../lib/rules/import-comments');
 var test = require('../files/index.js');
 var RuleTester = require('eslint').RuleTester;
-RuleTester.setDefaultConfig({
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: "module"
-  }
-});
+
+RuleTester.setDefaultConfig({parser: 'babel-eslint'});
 
 var ruleTester = new RuleTester();
 
-ruleTester.run('example', rule, {
-  valid: ([
+function injectConfig(testCases, testConfig) {
+  var injected = Object.assign(testCases, {
+    valid: testCases.valid.map((testCase) => Object.assign(testCase, testConfig)),
+    invalid: testCases.invalid.map((testCase) => Object.assign(testCase, testConfig))
+  });
+
+  return injected;
+}
+
+const testEslintConfig = {
+  options: [{
+    moduleType: 'nodeModule',
+    comment: ' vendor modules'
+  }, {
+    moduleType: 'testModule',
+    paths: ['tests/lib/files/'],
+    comment: ' test modules'
+  }]
+};
+
+const mockSourceFileLocation = path.join(process.cwd(), './tests/lib/files/');
+
+ruleTester.run('import-comments', rule, injectConfig({
+  valid: [
     {
       code: `
         // test modules
         import x from "./existent-file";
         import y from "./existent-file-2";
       `,
-      filename: path.join(process.cwd(), './tests/lib/files/')
+      filename: mockSourceFileLocation
     },
     {
       code: `
         // vendor modules
         import x from "path";
       `,
-      filename: path.join(process.cwd(), './tests/lib/files/')
+      filename: mockSourceFileLocation
     }
-  ]).map(function (testCase) {
-    return Object.assign(testCase, {
-      options: [{
-        moduleType: 'nodeModule',
-        comment: ' vendor modules'
-      }, {
-        moduleType: 'testModule',
-        paths: ['tests/lib/files/'],
-        comment: ' test modules'
-      }]
-    });
-  }),
-  invalid: ([
+  ],
+  invalid: [
     {
       code: `
         import x from "./existent-file";
         import y from "path";
       `,
-      filename: path.join(process.cwd(), './tests/lib/files/'),
+      filename: mockSourceFileLocation,
       errors: [{
         message: 'module import: no associated "\\\\ test modules" comment'
       }, {
@@ -70,16 +79,5 @@ ruleTester.run('example', rule, {
     //     }
     //   ]
     // }
-  ]).map(function (testCase) {
-    return Object.assign(testCase, {
-      options: [{
-        moduleType: 'nodeModule',
-        comment: ' vendor modules'
-      }, {
-        moduleType: 'testModule',
-        paths: ['tests/lib/files/'],
-        comment: ' test modules'
-      }]
-    });
-  }),
-});
+  ],
+}, testEslintConfig));
