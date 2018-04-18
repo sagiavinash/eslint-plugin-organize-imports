@@ -1,22 +1,16 @@
-require('babel-register');
-
-var path = require('path');
-var rule = require('../../../lib/rules/import-comments');
-var test = require('../files/index.js');
-var RuleTester = require('eslint').RuleTester;
+import path from 'path';
+import rule from '../../../lib/rules/import-comments';
+import test from '../files/index.js';
+import {RuleTester} from 'eslint';
 
 RuleTester.setDefaultConfig({parser: 'babel-eslint'});
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 
-function injectConfig(testCases, testConfig) {
-  var injected = Object.assign(testCases, {
-    valid: testCases.valid.map((testCase) => Object.assign(testCase, testConfig)),
-    invalid: testCases.invalid.map((testCase) => Object.assign(testCase, testConfig))
-  });
-
-  return injected;
-}
+const injectConfig = (testCases, testConfig) => Object.assign(testCases, {
+  valid: testCases.valid.map((testCase) => Object.assign(testCase, testConfig)),
+  invalid: testCases.invalid.map((testCase) => Object.assign(testCase, testConfig))
+});
 
 const testEslintConfig = {
   options: [{

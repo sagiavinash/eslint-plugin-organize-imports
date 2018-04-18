@@ -7,7 +7,7 @@
     "major-release": "npm version major && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
-    "test": "mocha tests/**/*.js"
+    "test": "mocha tests/lib/rules/index.js"
   },
   "keywords": [
     "eslint",
