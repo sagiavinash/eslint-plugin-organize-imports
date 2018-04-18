@@ -1,5 +1,5 @@
 import path from 'path';
-import rule from '../../../lib/rules/import-comments';
+import {importComments as rule} from '../../../lib/rules/';
 import test from '../files/index.js';
 import {RuleTester} from 'eslint';
 
