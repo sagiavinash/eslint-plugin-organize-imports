@@ -1,5 +1,5 @@
 module.exports = {
   rules: {
-    'import-comment': require('./lib/rules/import-comments')
+    'import-comments': require('./lib/rules/import-comments')
   }
 };
