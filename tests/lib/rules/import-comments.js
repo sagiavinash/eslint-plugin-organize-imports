@@ -13,17 +13,19 @@ const injectConfig = (testCases, testConfig) => Object.assign(testCases, {
 });
 
 const testEslintConfig = {
-  options: [{
-    moduleType: 'nodeModule',
-    comment: ' vendor modules'
-  }, {
-    moduleType: 'testModule',
-    paths: ['tests/lib/files/'],
-    comment: ' test modules'
+  options: [2, {
+    commentRules: [{
+      moduleType: 'nodeModule',
+      comment: ' vendor modules'
+    }, {
+      moduleType: 'testModule',
+      paths: ['tests/lib/files/'],
+      comment: ' test modules'
+    }]
   }]
 };
 
-const mockSourceFileLocation = path.join(process.cwd(), './tests/lib/files/');
+const mockSourceFileLocation = path.join(process.cwd(), './tests/lib/files/test.js');
 
 ruleTester.run('import-comments', rule, injectConfig({
   valid: [
@@ -51,9 +53,9 @@ ruleTester.run('import-comments', rule, injectConfig({
       `,
       filename: mockSourceFileLocation,
       errors: [{
-        message: 'module import: no associated "\\\\ test modules" comment'
+        message: 'module import: no associated "// test modules" comment'
       }, {
-        message: 'module import: no associated "\\\\ vendor modules" comment',
+        message: 'module import: no associated "// vendor modules" comment',
       }]
     },
     // {
