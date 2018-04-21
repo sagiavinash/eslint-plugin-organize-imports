@@ -58,22 +58,22 @@ ruleTester.run('import-comments', rule, injectConfig({
         message: 'module import: no associated "// vendor modules" comment',
       }]
     },
-    // {
-    //   code: `
-    //     // test modules
-    //     import x from "./existent-file";
-    //     // vendor modules
-    //     import y from "path";
-    //   `,
-    //   filename: path.join(process.cwd(), './tests/lib/files/'),
-    //   errors: [
-    //     {
-    //       message: 'module needs to come after "nodeModule" modules'
-    //     },
-    //     {
-    //       message: 'module import: no associated "\\\\ test modules" comment'
-    //     }
-    //   ]
-    // }
+    {
+      code: `
+        // test modules
+        import x from "./existent-file";
+        // vendor modules
+        import y from "path";
+      `,
+      filename: mockSourceFileLocation,
+      errors: [
+        {
+          message: '"testModule" modules need to be after "nodeModule" modules'
+        },
+        {
+          message: '"nodeModule" modules need to be first in order'
+        }
+      ]
+    }
   ],
 }, testEslintConfig));
