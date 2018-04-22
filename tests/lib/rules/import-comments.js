@@ -19,7 +19,7 @@ const testEslintConfig = {
       comment: ' vendor modules'
     }, {
       moduleType: 'testModule',
-      paths: ['tests/lib/files/'],
+      include: ['tests/lib/files/'],
       comment: ' test modules'
     }]
   }]
