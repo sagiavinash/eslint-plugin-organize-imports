@@ -13,7 +13,7 @@ const injectConfig = (testCases, testConfig) => Object.assign(testCases, {
 });
 
 const testEslintConfig = {
-  options: [2, {
+  options: [{
     commentRules: [{
       moduleType: 'nodeModule',
       comment: ' vendor modules'
