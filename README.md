@@ -29,15 +29,15 @@ npm install --save-dev eslint-plugin-module-comments
     "import-comments/import-comments": ["error", {
       "commentRules": [{
         "moduleType": "nodeModule",
-        "comment": " vendor modules"
+        "comment": "vendor modules"
       }, {
         "moduleType": "testModule",
-        "comment": " test modules",
+        "comment": "test modules",
         "include": ["src/test/"],
         "exclude":  ["src/test/utils"]
       }, {
         "moduleType": "utilityModule",
-        "comment": " utility modules",
+        "comment": "utility modules",
         "include": [
           "src/shared/constants",
           "src/+(shared|server|test)/utils",

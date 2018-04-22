@@ -16,11 +16,11 @@ const testEslintConfig = {
   options: [{
     commentRules: [{
       moduleType: 'nodeModule',
-      comment: ' vendor modules'
+      comment: 'vendor modules'
     }, {
       moduleType: 'testModule',
       include: ['tests/lib/files/'],
-      comment: ' test modules'
+      comment: 'test modules'
     }]
   }]
 };
