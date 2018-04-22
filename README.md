@@ -9,6 +9,9 @@ To prevent this, one can use this lint rule to organize imports
 npm install --save-dev eslint-plugin-module-comments
 ```
 
+## Plugin in action - vscode
+![Plugin in action - vscode](https://raw.githubusercontent.com/sagiavinash/eslint-plugin-import-comments/master/assets/plugin_in_use_vscode.png)
+
 ## Config/Options Schema:
 - `commentRules` - **_(required)_** Array of configs for each import-group comments
     - `moduleType` - **_(required)_** String to denote a module-group in error messages. `nodeModule` is a predefined value to denote external dependencies
