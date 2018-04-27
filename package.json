@@ -7,20 +7,26 @@
     "major-release": "npm version major && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
-    "test": "mocha tests/lib/rules/index.js"
+    "build": "webpack --config=webpack.config.js",
+    "build-test": "webpack --config=webpack.config.tests.js",
+    "lint": "eslint --ext js ./lib ./tests",
+    "test": "npm run build-test;mocha dist/dist-tests.js"
   },
-  "keywords": [
-    "eslint",
-    "eslint-plugin",
-    "eslintplugin"
-  ],
+  "keywords": ["eslint", "eslint-plugin", "eslintplugin"],
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.3",
-    "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
-    "eslint": "4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "webpack": "^2.2.0",
     "mocha": "3.1.0"
   },
   "peerDependencies": {

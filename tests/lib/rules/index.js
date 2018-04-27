@@ -1,3 +1,1 @@
-require('babel-register');
-
-require('./import-comments');
+import "./import-comments";
