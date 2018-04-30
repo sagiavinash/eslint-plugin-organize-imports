@@ -6,7 +6,7 @@ To prevent this, one can use this lint rule to organize imports
 
 ## Usage:
 ```
-npm install --save-dev eslint-plugin-module-comments
+npm install --save-dev eslint-plugin-import-comments
 ```
 
 ## Plugin in action - vscode
