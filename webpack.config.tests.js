@@ -1,7 +1,7 @@
 // vendor modules
 var webpack = require("webpack");
 var path = require("path");
-
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 var config = {
   entry: path.resolve(__dirname, "./tests/lib/rules/index.js"),
   output: {
@@ -16,14 +16,38 @@ var config = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["es2015"]
+            presets: [
+              [
+                "env",
+                {
+                  targets: {
+                    node: "current",
+                    uglify: true
+                  }
+                }
+              ]
+            ]
           }
         }
       }
     ]
   },
   target: "node",
-  plugins: [new webpack.optimize.UglifyJsPlugin({ minimize: true })]
+  optimization: {
+    minimizer: [
+      // we specify a custom UglifyJsPlugin here to get source maps in production
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
+    ]
+  }
 };
 
 module.exports = config;

@@ -4,18 +4,19 @@
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "scripts": {
-    "major-release":
-      "npm version major && npm publish && git push --follow-tags",
-    "minor-release":
-      "npm version minor && npm publish && git push --follow-tags",
-    "patch-release":
-      "npm version patch && npm publish && git push --follow-tags",
+    "major-release": "npm version major && npm publish && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish && git push --follow-tags",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "build": "webpack --config=webpack.config.js",
-    "build-test": "webpack --config=webpack.config.tests.js",
+    "build-test": "webpack -p --config=webpack.config.tests.js",
     "lint": "eslint --ext js ./lib ./tests",
     "test": "npm run build-test;mocha dist/dist-tests.js"
   },
-  "keywords": ["eslint", "eslint-plugin", "eslintplugin"],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
@@ -29,7 +30,9 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "mocha": "3.1.0",
-    "webpack": "^2.2.0"
+    "uglifyjs-webpack-plugin": "1.2.5",
+    "webpack": "4.6.0",
+    "webpack-cli": "2.1.2"
   },
   "peerDependencies": {
     "eslint": "^2.0.0 || ^3.0.0 || ^4.0.0"
@@ -38,6 +41,7 @@
     "node": ">=0.10"
   },
   "dependencies": {
+    "babel-preset-env": "1.6.1",
     "lodash": "^4.17.5",
     "minimatch": "^3.0.4"
   }
