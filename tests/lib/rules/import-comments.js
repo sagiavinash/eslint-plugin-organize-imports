@@ -6,11 +6,11 @@ RuleTester.setDefaultConfig({ parser: 'babel-eslint' });
 
 const ruleTester = new RuleTester();
 
-const injectConfig = (testCases, testConfig) =>
-  Object.assign(testCases, {
-    valid: testCases.valid.map(testCase => Object.assign(testCase, testConfig)),
-    invalid: testCases.invalid.map(testCase => Object.assign(testCase, testConfig)),
-  });
+const injectConfig = (testCases, testConfig) => ({
+  ...testCases,
+  valid: testCases.valid.map(testCase => ({ ...testCase, testConfig })),
+  invalid: testCases.invalid.map(testCase => ({ ...testCase, testConfig })),
+});
 
 const testEslintConfig = {
   options: [

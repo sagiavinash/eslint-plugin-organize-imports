@@ -1,0 +1,4 @@
+index.js
+webpack.config.js
+webpack.config.tests.js
+dist/*

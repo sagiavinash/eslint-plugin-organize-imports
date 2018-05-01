@@ -1,7 +1,8 @@
 // vendor modules
 var webpack = require("webpack");
 var path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
 var config = {
   entry: path.resolve(__dirname, "./tests/lib/rules/index.js"),
   output: {

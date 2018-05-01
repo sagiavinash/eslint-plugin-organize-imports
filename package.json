@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-comments",
-  "version": "0.0.24",
+  "version": "0.0.28",
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,14 @@
     "babel-test": "babel tests --out-dir dist/tests",
     "lint": "eslint --ext js ./lib ./tests",
     "lint-fix": "eslint --fix --ext js ./lib ./tests",
-    "test": "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js"
+    "test": "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js",
+    "prepublish": "npm run build"
   },
-  "keywords": ["eslint", "eslint-plugin", "eslintplugin"],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
@@ -42,6 +47,7 @@
   },
   "dependencies": {
     "babel-preset-env": "1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
     "lodash": "^4.17.5",
     "minimatch": "^3.0.4"
   }
