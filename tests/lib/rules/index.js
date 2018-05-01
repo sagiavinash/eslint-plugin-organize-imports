@@ -1,1 +1,1 @@
-require("./import-comments");
+import './import-comments';

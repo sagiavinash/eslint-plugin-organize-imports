@@ -4,19 +4,16 @@
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "scripts": {
-    "major-release":
-      "npm version major && npm publish && git push --follow-tags",
-    "minor-release":
-      "npm version minor && npm publish && git push --follow-tags",
-    "patch-release":
-      "npm version patch && npm publish && git push --follow-tags",
+    "major-release": "npm version major && npm publish && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish && git push --follow-tags",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "build": "webpack --config=webpack.config.js",
     "build-test": "webpack -p --config=webpack.config.tests.js",
     "babel-src": "babel lib --out-dir dist/lib",
     "babel-test": "babel tests --out-dir dist/tests",
     "lint": "eslint --ext js ./lib ./tests",
-    "test":
-      "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js"
+    "lint-fix": "eslint --fix --ext js ./lib ./tests",
+    "test": "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js"
   },
   "keywords": ["eslint", "eslint-plugin", "eslintplugin"],
   "license": "MIT",
