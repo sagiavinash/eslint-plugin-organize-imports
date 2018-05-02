@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-comments",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "lint": "eslint --ext js ./lib ./tests",
     "lint-fix": "eslint --fix --ext js ./lib ./tests",
     "test": "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run babel-src"
   },
   "keywords": [
     "eslint",

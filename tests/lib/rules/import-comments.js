@@ -1,6 +1,6 @@
 import path from 'path';
 import { RuleTester } from 'eslint';
-import { importComments as rule } from '../../../lib/rules/';
+import rule from '../../../lib/rules/import-comments';
 
 RuleTester.setDefaultConfig({ parser: 'babel-eslint' });
 
