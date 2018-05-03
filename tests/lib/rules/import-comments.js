@@ -4,12 +4,14 @@ import rule from '../../../lib/rules/import-comments';
 
 RuleTester.setDefaultConfig({ parser: 'babel-eslint' });
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+  parser: 'babel-eslint',
+});
 
 const injectConfig = (testCases, testConfig) => ({
   ...testCases,
-  valid: testCases.valid.map(testCase => ({ ...testCase, testConfig })),
-  invalid: testCases.invalid.map(testCase => ({ ...testCase, testConfig })),
+  valid: testCases.valid.map(testCase => ({ ...testCase, ...testConfig })),
+  invalid: testCases.invalid.map(testCase => ({ ...testCase, ...testConfig })),
 });
 
 const testEslintConfig = {
@@ -40,26 +42,26 @@ ruleTester.run(
       valid: [
         {
           code: `
-        // test modules
-        import x from "./existent-file";
-        import y from "./existent-file-2";
-      `,
+            // test modules
+            import x from "./existent-file";
+            import y from "./existent-file-2";
+          `,
           filename: mockSourceFileLocation,
         },
         {
           code: `
-        // vendor modules
-        import x from "path";
-      `,
+            // vendor modules
+            import x from "path";
+          `,
           filename: mockSourceFileLocation,
         },
       ],
       invalid: [
         {
           code: `
-        import x from "./existent-file";
-        import y from "path";
-      `,
+            import x from "./existent-file";
+            import y from "path";
+          `,
           filename: mockSourceFileLocation,
           errors: [
             {
@@ -72,11 +74,11 @@ ruleTester.run(
         },
         {
           code: `
-        // test modules
-        import x from "./existent-file";
-        // vendor modules
-        import y from "path";
-      `,
+            // test modules
+            import x from "./existent-file";
+            // vendor modules
+            import y from "path";
+          `,
           filename: mockSourceFileLocation,
           errors: [
             {
