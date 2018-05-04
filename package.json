@@ -13,7 +13,7 @@
     "babel-test": "babel tests --out-dir dist/tests",
     "lint": "eslint --ext js ./lib ./tests",
     "lint-fix": "eslint --fix --ext js ./lib ./tests",
-    "test": "npm run babel-src;npm run babel-test;mocha dist/tests/lib/rules/index.js",
+    "test": "npm run babel-src > /dev/null;npm run babel-test > /dev/null;mocha dist/tests/lib/rules/index.js",
     "prepublish": "npm run babel-src"
   },
   "keywords": [

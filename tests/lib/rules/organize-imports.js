@@ -1,6 +1,6 @@
 import path from 'path';
 import { RuleTester } from 'eslint';
-import rule from '../../../lib/rules/import-comments';
+import rule from '../../../lib/rules/organize-imports';
 
 RuleTester.setDefaultConfig({ parser: 'babel-eslint' });
 
@@ -35,7 +35,7 @@ const testEslintConfig = {
 const mockSourceFileLocation = path.join(process.cwd(), './tests/lib/files/test.js');
 
 ruleTester.run(
-  'import-comments',
+  'organize-imports',
   rule,
   injectConfig(
     {
@@ -51,7 +51,9 @@ ruleTester.run(
         {
           code: `
             // vendor modules
-            import x from "path";
+            import y from "path";
+            // test modules
+            import x from "./existent-file";
           `,
           filename: mockSourceFileLocation,
         },
@@ -59,16 +61,16 @@ ruleTester.run(
       invalid: [
         {
           code: `
-            import x from "./existent-file";
             import y from "path";
+            import x from "./existent-file";
           `,
           filename: mockSourceFileLocation,
           errors: [
             {
-              message: 'module import: no associated "// test modules" comment',
+              message: 'no associated "// vendor modules" comment',
             },
             {
-              message: 'module import: no associated "// vendor modules" comment',
+              message: 'no associated "// test modules" comment',
             },
           ],
         },
@@ -82,10 +84,10 @@ ruleTester.run(
           filename: mockSourceFileLocation,
           errors: [
             {
-              message: '"testModule" modules need to be after "nodeModule" modules',
+              message: '"testModule" modules should be after "nodeModule" modules',
             },
             {
-              message: '"nodeModule" modules need to be first in order',
+              message: '"nodeModule" modules should be before "testModule" modules',
             },
           ],
         },
