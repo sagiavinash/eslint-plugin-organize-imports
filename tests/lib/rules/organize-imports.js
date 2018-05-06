@@ -28,6 +28,10 @@ const testEslintConfig = {
           comment: 'test modules',
         },
       ],
+      pathAliases: [{
+        prefix: '<tests>',
+        resolvesTo: './tests/lib/files',
+      }],
     },
   ],
 };
@@ -43,7 +47,7 @@ ruleTester.run(
         {
           code: `
             // test modules
-            import x from "./existent-file";
+            import x from "<tests>/existent-file";
             import y from "./existent-file-2";
           `,
           filename: mockSourceFileLocation,

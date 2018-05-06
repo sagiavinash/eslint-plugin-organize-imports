@@ -1,2 +1,2 @@
-// import './import-comments';
+import './import-comments';
 import './organize-imports';
