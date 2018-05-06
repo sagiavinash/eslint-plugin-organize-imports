@@ -17,7 +17,7 @@ const injectConfig = (testCases, testConfig) => ({
 const testEslintConfig = {
   options: [
     {
-      commentRules: [
+      orderRules: [
         {
           moduleType: 'nodeModule',
           comment: 'vendor modules',
