@@ -57,6 +57,7 @@ ruleTester.run(
             // vendor modules
             import y from "path";
             // test modules
+            // hello
             import x from "./existent-file";
           `,
           filename: mockSourceFileLocation,
