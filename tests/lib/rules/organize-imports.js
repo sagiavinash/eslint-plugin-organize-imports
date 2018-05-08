@@ -91,9 +91,6 @@ ruleTester.run(
             {
               message: '"testModule" modules should be after "nodeModule" modules',
             },
-            {
-              message: '"nodeModule" modules should be before "testModule" modules',
-            },
           ],
         },
       ],
