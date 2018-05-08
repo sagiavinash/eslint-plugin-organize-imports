@@ -1,8 +1,9 @@
 {
   "name": "eslint-plugin-organize-imports",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
+  "repository": "https://github.com/sagiavinash/eslint-plugin-organize-imports.git",
   "scripts": {
     "major-release": "npm version major && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
