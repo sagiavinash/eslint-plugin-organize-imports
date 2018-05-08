@@ -72,14 +72,14 @@ import sampleUtils from '<shared>/utils/sample-utils';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import sampleUtils from '<shared>/utils/sample-utils';  /* [eslint] module import: no associated "// utility modules" comment */
+import sampleUtils from '<shared>/utils/sample-utils';  /* [eslint] no associated "// utility modules" comment */
 ```
 ### invalid code - (wrong order of import-groups)
 **sourceFileLocation:** `/src/test/sample1.js`
 ```js
-// utility modules                                      /* [eslint] module import: "utilityModule" modules need to be after "nodeModule" modules */
+// utility modules                                      /* [eslint] "utilityModule" modules need to be after "nodeModule" modules */
 import sampleUtils from '<shared>/utils/sample-utils';
-// vendor modules                                       /* [eslint] module import: "nodeModule" modules need to be first in order */
+// vendor modules
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
