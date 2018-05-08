@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-organize-imports",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "repository": "https://github.com/sagiavinash/eslint-plugin-organize-imports.git",
