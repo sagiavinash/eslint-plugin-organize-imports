@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-comments",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "ESLint plugin boilerplate",
   "main": "index.js",
   "scripts": {
