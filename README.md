@@ -1,4 +1,4 @@
-# eslint-plugin-import-comments:
+# eslint-plugin-organize-imports:
 An eslint plugin to enforce grouping of similar modules together with an associated comment & order of these groups.
 ## Problem:
 when lot of imports are present on top of a file, its difficult to recognize if a file is imported already and leads to duplicate imports.
@@ -6,28 +6,28 @@ To prevent this, one can use this lint rule to organize imports
 
 ## Usage:
 ```
-npm install --save-dev eslint-plugin-import-comments
+npm install --save-dev eslint-plugin-organize-imports
 ```
 
 ## Plugin in action - vscode
-![Plugin in action - vscode](https://raw.githubusercontent.com/sagiavinash/eslint-plugin-import-comments/master/assets/plugin_in_use_vscode.png)
+![Plugin in action - vscode](https://raw.githubusercontent.com/sagiavinash/eslint-plugin-organize-imports/master/assets/plugin_in_use_vscode.png)
 
 ## Config/Options Schema:
-- `commentRules` - **_(required)_** Array of configs for each import-group comments
+- `orderRules` - **_(required)_** Array of configs for each import-groups
     - `moduleType` - **_(required)_** String to denote a module-group in error messages. `nodeModule` is a predefined value to denote external dependencies
     - `comment` - **_(required)_** string that is the comment body. rule checks for equality after comment body's trimming whitespace.
     - `include` - array of paths(glob patterns supported) that categorize matching modules into the import group
     - `exclude` - array of paths(glob patterns supported) that avoid categorizing the matching modules into the import group
-- `pathAliases` - **_(optional)_** to support usecases like `babel-plugin-module-alias` and any other other webpack plugins which preprocess shorthand prefixes in import paths to an actual path
-    - `prefix` - string to denote the shorthand prefix that gets preprocessed to get the final filepath (*ex: `expose` in `babel-plugin-module-alias`*)
+- `pathAliases` - **_(optional)_** to support use cases like `babel-plugin-module-alias` and any other other webpack plugins which preprocess shorthand prefixes in import paths to an actual path
+    - `prefix` - string to denote the shorthand prefix that gets preprocessed to get the final file path (*ex: `expose` in `babel-plugin-module-alias`*)
     - `resolvesTo` - the string that replaces the path prefix by the preprocessing tool (*ex: `src` in `babel-plugin-module-alias`*)
 ## Example:
 `.eslintrc`
 ```json
 {
   "rules": {
-    "import-comments/import-comments": ["error", {
-      "commentRules": [{
+    "organize-imports/organize-imports": ["error", {
+      "orderRules": [{
         "moduleType": "nodeModule",
         "comment": "vendor modules"
       }, {
