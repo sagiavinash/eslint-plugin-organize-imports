@@ -15,15 +15,16 @@ npm install --save-dev eslint-plugin-organize-imports
 ## Config/Options Schema:
 - `orderRules` - **_(required)_** Array of configs for each import-groups
     - `moduleType` - **_(required)_** String to denote a module-group in error messages. `nodeModule` is a predefined value to denote external dependencies
-    - `comment` - **_(required)_** string that is the comment body. rule checks for equality after comment body's trimming whitespace.
-    - `include` - array of paths(glob patterns supported) that categorize matching modules into the import group
-    - `exclude` - array of paths(glob patterns supported) that avoid categorizing the matching modules into the import group
+whitespace.
+    - `include` - **_(required)_** array of paths(glob patterns supported) that categorize matching modules into the import group
+    - `exclude` - **_(optional)_** array of paths(glob patterns supported) that avoid categorizing the matching modules into the import group
+    - `comment` - **_(optional)_** string that is the comment body. rule checks for equality after comment body's trimming 
 - `pathAliases` - **_(optional)_** to support use cases like `babel-plugin-module-alias` and any other other webpack plugins which preprocess shorthand prefixes in import paths to an actual path
     - `prefix` - string to denote the shorthand prefix that gets preprocessed to get the final file path (*ex: `expose` in `babel-plugin-module-alias`*)
     - `resolvesTo` - the string that replaces the path prefix by the preprocessing tool (*ex: `src` in `babel-plugin-module-alias`*)
 ## Example:
 `.eslintrc`
-```json
+```js
 {
   "rules": {
     "organize-imports/organize-imports": ["error", {
